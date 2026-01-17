@@ -1,11 +1,11 @@
 import spotifyIcon from './spotify-icon.svg';
 import './App.css';
 import img from './IMG2225.jpg'
-import ReleasePage from './releasePage';
-import SubmissionPage from './SubmissionPage';
-import HomePage from './HomePage';
-import SignUpPage from './SignUp';
-import DashBoard from './DashBoard';
+import ReleasePage from './releasePage.js';
+import SubmissionPage from './SubmissionPage.js';
+import HomePage from './HomePage.js';
+import SignUpPage from './SignUp.js';
+import DashBoard from './DashBoard.js';
 import React from 'react';
 import LogInPage from './LogIn.js';
 import { Routes, Route, useNavigate} from 'react-router-dom';
