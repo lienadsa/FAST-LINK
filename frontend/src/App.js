@@ -7,7 +7,7 @@ import HomePage from './HomePage';
 import SignUpPage from './SignUp';
 import DashBoard from './DashBoard';
 import React from 'react';
-import LogInPage from './LogIn';
+import LogInPage from './LogIn.js';
 import { Routes, Route, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from  'react';
 import axios from 'axios';

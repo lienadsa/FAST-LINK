@@ -2,7 +2,7 @@ import './App.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+import axios from 'axios'
 import dotenv from 'dotenv';
 
 function SignUpPage() {
