@@ -1,6 +1,7 @@
 import './App.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import dotenv from 'dotenv';
 
 function HomePage () {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ function HomePage () {
     async function Navigation(event) {
         
       try {
-        const res = await axios.post('http://localhost:5000/isauthenticated',{}, { withCredentials: true });
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/isauthenticated`,{}, { withCredentials: true });
         if (res.data.success) {
           navigate(`/${res.data.userId}/dashboard`);
         } else {

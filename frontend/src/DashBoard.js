@@ -27,7 +27,7 @@ useEffect(() => {
   const fetchReleases = async () => {
     try {
       const response = await axios.get(
-        `${process.env.BACKEND_BASE_URL}/dashboard`,
+        `${process.env.REACT_APP_BACKEND_BASE_URL}/dashboard`,
         {
           params: { user_id },
           signal: controller.signal,
@@ -82,7 +82,7 @@ useEffect(() => {
     async function Delete(event) {
         event.preventDefault();
         const release_id = event.target.getAttribute("name");
-        const response = await axios.get(`${process.env.BACKEND_BASE_URL}/delete`, {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/delete`, {
             params: { user_id, release_id }
         });
         const data = response.data;
@@ -139,14 +139,14 @@ useEffect(() => {
    </tbody>
   </table>
     </div>
-   <button style={{marginTop: "20px"}} className="btn btn-outline-dark" onClick={ async() => { const res = await axios.post(`${process.env.BACKEND_BASE_URL}/logout`, { withCredentials: true }); if (res.status === 200) {navigateToLogin();} else {console.log("Logout failed");}}}>Log out</button>
+   <button style={{marginTop: "20px"}} className="btn btn-outline-dark" onClick={ async() => { const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/logout`, { withCredentials: true }); if (res.status === 200) {navigateToLogin();} else {console.log("Logout failed");}}}>Log out</button>
     </div>
     </div>
      ) : (
       <div style={{backgroundColor: "#FF6D1F" , height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
     <div style={{display: "flex" , flexDirection: "column" , justifyContent: "center", alignContent: "center"}} onClick={NewRelease}><img src={plus} style={{width: "200px", height: "200px"}}/></div>
     <h1 style={{color: "black"}}>Dashboard is empty. Create a new release!</h1>
-    <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}><button style={{ marginTop: "20px"}} className="btn btn-outline-dark" onClick={ async() => { const res = await axios.post(`${process.env.BACKEND_BASE_URL}/logout`,{} , { withCredentials: true }); if (res.status === 200) {navigateToLogin();}}}>Log out</button>
+    <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}><button style={{ marginTop: "20px"}} className="btn btn-outline-dark" onClick={ async() => { const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/logout`,{} , { withCredentials: true }); if (res.status === 200) {navigateToLogin();}}}>Log out</button>
     </div>
     </div>
      )

@@ -22,7 +22,7 @@ function ReleasePage() {
       const controller = new AbortController();
     const getReleaseInfo = async () => {
       try {
-        const response = await axios.get(`${process.env.BACKEND_BASE_URL}/retrieve`, {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/retrieve`, {
     params: {
       user_id : user_id,
       release_id : release_id,
@@ -36,7 +36,7 @@ function ReleasePage() {
           
            try {
   const viewResponse = await axios.post(
-    `${process.env.BACKEND_BASE_URL}/views`,
+    `${process.env.REACT_APP_BACKEND_BASE_URL}/views`,
     {
       user_id: user_id,
       release_id: release_id,
@@ -66,7 +66,7 @@ function ReleasePage() {
 
   function UpdateStats(event) {
     const linkName = event.currentTarget.getAttribute('name');
-    axios.post(`${process.env.BACKEND_BASE_URL}/stats`, { platformlinkName: linkName, user_id: user_id, release_id: release_id});
+    axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/stats`, { platformlinkName: linkName, user_id: user_id, release_id: release_id});
   }
 
   return (

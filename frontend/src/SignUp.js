@@ -23,7 +23,7 @@ function SignUpPage() {
     event.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.BACKEND_BASE_URL}/signup`, {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/signup`, {
         email: input.email,
         password: input.password
       });

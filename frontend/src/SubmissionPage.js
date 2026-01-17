@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import dotenv from 'dotenv';
+
 
 function SubmissionPage() {
 
@@ -21,7 +21,7 @@ function SubmissionPage() {
         setIsChecking(true);
         
         try { 
-            const response = await axios.post(`${process.env.BACKEND_BASE_URL}/api/deezer/track/${isrc}`, {user_id : user_id});
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/deezer/track/${isrc}`, {user_id : user_id});
             if (response.data.success) {
             setIsChecking(false);
             alert("ISRC verified successfully and release has been successfully generated!");

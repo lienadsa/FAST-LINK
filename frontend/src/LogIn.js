@@ -21,7 +21,7 @@ function LogInPage() {
         event.preventDefault();
 
             try {
-              const res = await axios.post(`${process.env.BACKEND_BASE_URL}/login`, {
+              const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/login`, {
                 email: input.email,
                 password: input.password
               }, { withCredentials: true });
