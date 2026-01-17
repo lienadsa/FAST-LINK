@@ -2,7 +2,7 @@ import './App.css';
 import { useNavigate } from 'react-router-dom';
 import {React, useEffect, useState} from 'react';
 import axios from 'axios';
-import dotenv from 'dotenv';
+
 
 function LogInPage() { 
     const navigate = useNavigate();

@@ -11,7 +11,6 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import dotenv from 'dotenv';
 
 function DashBoard() {
    // let img = "https://linkstorage.linkfire.com/medialinks/images/d6e7bba0-7d0f-4d83-ab77-d6b339179a54/artwork-440x440.jpg";

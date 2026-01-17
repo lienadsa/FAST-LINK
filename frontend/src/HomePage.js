@@ -1,7 +1,7 @@
 import './App.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import dotenv from 'dotenv';
+
 
 function HomePage () {
     const navigate = useNavigate();
