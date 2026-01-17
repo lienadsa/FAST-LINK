@@ -1,0 +1,239 @@
+.App {
+  /*text-align: center;*/
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100vh;
+  width:  100vw;
+  margin-top: 0px;
+  
+}
+
+.home {
+  display: flex;
+  background-color: #FF6D1F;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  width:  100vw;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100vw;
+  background-color: #171010;
+}
+
+.content {
+  background-color: #FF6D1F;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: -200px;
+
+}
+
+@font-face {
+  font-family: 'Commuters-sans'; /* Name you will use in your app */
+  src: url('./fonts-commuters/fonnts.com-Commuters_Sans_Heavy.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NOVABOLD'; /* Name you will use in your app */
+  src: url('./fonts/fonnts.com-NOVABOLD.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ALFASLAB'; /* Name you will use in your app */
+  src: url('./Alfa_Slab_One/AlfaSlabOne-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.item{
+  order: 1;
+}
+
+.item2{
+  order: 2;
+}
+
+.spotify{
+  
+}
+
+h1{
+   font-family: 'Commuters-sans', Commuters-sans; 
+   color: white;
+   font-size: 2rem
+
+   
+   
+}
+
+.content > h1{
+   font-family: 'Commuters-sans', Commuters-sans; 
+   color: white;
+   font-size: 2rem;
+   letter-spacing: -.05em;
+   line-height: .85;
+   text-align: center;
+
+   
+   
+}
+ .menu > h1{
+  font-size: 2rem;
+   letter-spacing: -.05em;
+   line-height: .85;
+   text-align: center;
+ }
+
+
+.link{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  
+  
+
+}
+.link > h1 {
+  margin-left: 15px;
+  color: #295429ff;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+img{
+ border-radius: 15px 15px 0px 0px;
+ margin-top: 10px;
+}
+
+
+
+.second{
+  background-color: #000000ff;
+  backdrop-filter: blur(40px); 
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0px 0px 10px 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.block{
+  border-radius: 10px 10px 10px 10px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.section{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    background: transparent;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: rgba(6, 6, 6, 0.3);
+    backdrop-filter: blur(40px); 
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+.ui-artwork {
+    margin-top: 0px;
+    
+    
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ui-blurred-background {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: -1;
+}
+
+.ui-blurred-background__container {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    z-index: -2;
+    height: 200%;
+    width: 200%;
+    top: -50%;
+    left: -50%;
+    transform: translate3d(0, 0, 0);
+    background-color: #000;
+    display: block;
+    position: fixed;
+}
