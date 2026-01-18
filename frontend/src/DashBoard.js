@@ -61,7 +61,7 @@ useEffect(() => {
   return () => {
     controller.abort(); 
   };
-}, [user_id]);
+}, [user_id, navigate]);
 
     function navigateToLogin() {
       navigate('/login');

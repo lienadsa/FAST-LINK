@@ -62,7 +62,7 @@ function ReleasePage() {
     getReleaseInfo();
     console.log("Release info fetched:", releaseInfo);
     return () => {controller.abort();};
-  }, [user_id, release_id]);
+  }, [user_id, release_id , releaseInfo]);
 
   function UpdateStats(event) {
     const linkName = event.currentTarget.getAttribute('name');
