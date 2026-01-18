@@ -19,13 +19,13 @@ const PgSession = connect(session);
 
 
 const pool = new Pool({
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
+  user: process.env.PG_USER, 
+  host: process.env.PG_HOST, 
+  database: process.env.PG_DATABASE, 
+  password: process.env.PG_PASSWORD, 
   port: process.env.PG_PORT,
+  ssl: { rejectUnauthorized: false },
 });
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +48,10 @@ app.use(session({
     sameSite: 'lax',
     secure: false }
 }));
+
+/*pool.connect()
+  .then(() => console.log('Connected to Supabase ✅'))
+  .catch(err => console.error('Connection error:', err)); */
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -101,7 +105,7 @@ passport.deserializeUser(async (id, done) => {
 
 
 app.post('/signup', (req, res) => {
-  console.log(req.body);
+  console.log("request recieved at signup");
   const email = req.body.email;
 
   bcrypt.hash(req.body.password, 10, async (err, hash) => {
