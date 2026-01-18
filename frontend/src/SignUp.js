@@ -8,7 +8,8 @@ import axios from 'axios'
 function SignUpPage() {
   const navigate = useNavigate();
   const [input, setInput] = useState({ email: '', password: '' });
-  
+  const backend = process.env.REACT_APP_BACKEND_BASE_URL;
+  console.log(backend);
 
   
   function Update(event) {
@@ -23,7 +24,7 @@ function SignUpPage() {
     event.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/signup`, {
+      const res = await axios.post(`${backend}/signup`, {
         email: input.email,
         password: input.password
       });

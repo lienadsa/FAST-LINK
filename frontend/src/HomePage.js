@@ -5,8 +5,9 @@ import axios from 'axios';
 
 function HomePage () {
     const navigate = useNavigate();
-
+    
     async function Navigation(event) {
+      console.log("backend domain is" + process.env.REACT_APP_BACKEND_BASE_URL);
       console.log("Navigation button clicked:", event.target.name);  
       try {
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/isauthenticated`,{}, { withCredentials: true });
@@ -17,7 +18,7 @@ function HomePage () {
     }
       } 
       catch (error) {
-        console.log("User not authenticated");
+        console.log("User not authenticated" + error.message);
         navigate(`/${event.target.name}`);
       }
     }
