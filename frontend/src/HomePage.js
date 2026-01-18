@@ -7,7 +7,7 @@ function HomePage () {
     const navigate = useNavigate();
 
     async function Navigation(event) {
-        
+      console.log("Navigation button clicked:", event.target.name);  
       try {
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/isauthenticated`,{}, { withCredentials: true });
         if (res.data.success) {
@@ -18,6 +18,7 @@ function HomePage () {
       } 
       catch (error) {
         console.log("User not authenticated");
+        navigate(`/${event.target.name}`);
       }
     }
 
