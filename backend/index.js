@@ -35,6 +35,11 @@ app.use(cors({
   credentials: true
 }));
 
+app.options('*', cors({
+  origin: process.env.FRONTEND_BASE_URL,
+  credentials: true
+}));
+
 app.use(session({
   store: new PgSession({
     pool,
