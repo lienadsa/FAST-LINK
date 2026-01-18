@@ -35,7 +35,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors({
+app.options('/*', cors({
   origin: process.env.FRONTEND_BASE_URL,
   credentials: true
 }));
