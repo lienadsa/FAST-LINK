@@ -32,30 +32,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: process.env.FRONTEND_BASE_URL,
-  credentials: true
+  credentials: true ,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-app.options('/*', cors({
-  origin: process.env.FRONTEND_BASE_URL,
-  credentials: true
-}));
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (origin === process.env.FRONTEND_BASE_URL) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  }
-
-  // Preflight request
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204);
-  }
-
-  next();
-});
 
 app.use(session({
   store: new PgSession({
