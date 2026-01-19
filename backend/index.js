@@ -28,19 +28,17 @@ const pool = new Pool({
   pool_mode: process.env.PG_POOL_MODE
 });
 
-app.options('*', cors({
+// CORS configuration - FIXED
+const corsOptions = {
   origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+};
 
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.options('*', cors(corsOptions));
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -56,9 +54,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 604800000, httpOnly: true,
-    sameSite: 'lax',
-    secure: false }
+  cookie: { 
+    maxAge: 604800000, 
+    httpOnly: true,
+    sameSite: 'none',  // FIXED: Changed from 'lax' to 'none' for cross-site cookies
+    secure: true       // FIXED: Changed from false to true for HTTPS
+  }
 }));
 
 /*pool.connect()
