@@ -28,8 +28,6 @@ const pool = new Pool({
   pool_mode: process.env.PG_POOL_MODE
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: allowedOrigins,
@@ -37,6 +35,9 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 
