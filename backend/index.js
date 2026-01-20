@@ -15,6 +15,7 @@ const app = express();
 const port = process.env.APP_PORT;
 const allowedOrigins = [process.env.FRONTEND_BASE_URL];
 
+
 const { Pool } = pg;
 const PgSession = connect(session);
 
@@ -32,8 +33,9 @@ const pool = new Pool({
 app.use(cors({
   origin: allowedOrigins,
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+  allowedHeaders: ['Content-Type', 'Authorization'] 
+  
 }));
 
 app.use(express.json());
@@ -51,13 +53,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 604800000, httpOnly: true,
-    sameSite: 'lax',
+    sameSite: 'none',
     secure: true }
 }));
 
-/*pool.connect()
+pool.connect()
   .then(() => console.log('Connected to Supabase ✅'))
-  .catch(err => console.error('Connection error:', err)); */
+  .catch(err => console.error('Connection error:', err)); 
 
 app.use(passport.initialize());
 app.use(passport.session());
