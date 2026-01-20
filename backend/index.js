@@ -38,9 +38,11 @@ app.use(cors({
 }));
 
 app.options('/*', cors({
-  origin: allowedOrigins,
+  origin: process.env.FRONTEND_BASE_URL,
   credentials: true
 }));
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
