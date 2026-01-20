@@ -54,9 +54,11 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  proxy: true,
   cookie: { maxAge: 604800000, httpOnly: true,
     sameSite: 'none',
-    secure: true }
+    secure: true,
+    domain: undefined  }
 }));
 
 pool.connect()
