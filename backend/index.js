@@ -29,24 +29,17 @@ const pool = new Pool({
 });
 
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  
-  // Only set CORS headers if request is from allowed origin
-  if (origin === process.env.FRONTEND_BASE_URL) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  }
-  
-  // Handle preflight
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200).end();
-  }
-  
-  next();
-});
+app.use(cors({
+  origin: process.env.FRONTEND_BASE_URL, // Use string directly, not array
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+app.options('*', cors({
+  origin: process.env.FRONTEND_BASE_URL,
+  credentials: true
+}));
 
 
 
