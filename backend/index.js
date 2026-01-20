@@ -52,7 +52,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { maxAge: 604800000, httpOnly: true,
     sameSite: 'lax',
-    secure: false }
+    secure: true }
 }));
 
 /*pool.connect()
