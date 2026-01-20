@@ -36,10 +36,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-app.options('/*', cors({
-  origin: process.env.FRONTEND_BASE_URL,
-  credentials: true
-}));
+
 
 
 
