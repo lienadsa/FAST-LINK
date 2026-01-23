@@ -17,7 +17,6 @@ function ReleasePage() {
    const { user_id, release_id } = useParams();
    console.log("Release Page params:", user_id, release_id);
     const [releaseInfo, setReleaseInfo] = useState(null);
-    const [count, setCount] = useState(0);
    
     React.useEffect(() => {
       const controller = new AbortController();
@@ -34,7 +33,7 @@ function ReleasePage() {
           setReleaseInfo(response.data);
            console.log(response.data);
           
-           if (count < 1) {
+           
             setCount(count + 1);
             try {
   const viewResponse = await axios.post(
@@ -52,7 +51,7 @@ function ReleasePage() {
 } catch (viewError) {
   console.error("Error recording view:", viewError);
 }
-}
+
 }
           
         
