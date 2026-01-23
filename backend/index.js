@@ -247,7 +247,7 @@ app.post('/views', async (req, res) => {
 
   try {
     await pool.query(
-      'UPDATE releases SET views = views + 1 WHERE user_id = $1 AND release_id = $2',
+      'UPDATE releases SET views = COALESCE(views, 0) + 1 WHERE user_id = $1 AND release_id = $2',
       [user_id, release_id]
     );
     console.log("Views updated successfully");
