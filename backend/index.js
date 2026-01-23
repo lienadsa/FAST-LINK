@@ -243,6 +243,7 @@ app.post('/api/deezer/track/:isrc', async (req, res) => {
 });
 
 app.post('/views', async (req, res) => {
+  console.log("Views endpoint hit:", new Date().toISOString());
   const { user_id, release_id } = req.body;
 
   try {
