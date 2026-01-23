@@ -12,59 +12,51 @@ import axios from 'axios';
 
 
 function ReleasePage() {
-  
-  
-   const { user_id, release_id } = useParams();
-   console.log("Release Page params:", user_id, release_id);
-    const [releaseInfo, setReleaseInfo] = useState(null);
-   
-    React.useEffect(() => {
-      const controller = new AbortController();
-    const getReleaseInfo = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/retrieve`, {
-    params: {
-      user_id : user_id,
-      release_id : release_id,
-    },
-    signal: controller.signal,
-  });
-        if (response.data.success) {
-          setReleaseInfo(response.data);
-           console.log(response.data);
-          
-           
-            setCount(count + 1);
-            try {
-  const viewResponse = await axios.post(
-    `${process.env.REACT_APP_BACKEND_BASE_URL}/views`,
-    {
-      user_id: user_id,
-      release_id: release_id,
-    },
-    {
-      signal: controller.signal,
-    }
-  );
+const { user_id, release_id } = useParams();
+const [releaseInfo, setReleaseInfo] = useState(null);
+const hasViewed = React.useRef(false);
 
-  console.log("View recorded:", viewResponse.data);
-} catch (viewError) {
-  console.error("Error recording view:", viewError);
-}
 
-}
-          
-        
-          else { alert(`${response.data.message}`);};
-      } catch (error) {
-        alert(error.message);
-        console.error("Error fetching release info:", error);
+useEffect(() => {
+  const controller = new AbortController();
+
+  const getReleaseInfo = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_BASE_URL}/retrieve`,
+        {
+          params: { user_id, release_id },
+          signal: controller.signal,
+        }
+      );
+
+      if (response.data.success) {
+        setReleaseInfo(response.data);
+      }
+    } catch (err) {
+      if (!axios.isCancel(err)) {
+        console.error(err);
       }
     }
-    getReleaseInfo();
-    console.log("Release info fetched:", releaseInfo);
-    return () => {controller.abort();};
-  }, [user_id, release_id , releaseInfo]);
+  };
+
+  getReleaseInfo();
+  return () => controller.abort();
+}, [user_id, release_id]);
+
+
+useEffect(() => {
+  if (!releaseInfo) return;
+  if (hasViewed.current) return;
+
+  hasViewed.current = true;
+
+  axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/views`, {
+    user_id,
+    release_id,
+  });
+}, [releaseInfo, user_id, release_id]);
+
 
   function UpdateStats(event) {
     const linkName = event.currentTarget.getAttribute('name');
