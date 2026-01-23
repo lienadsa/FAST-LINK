@@ -30,12 +30,13 @@ function ReleasePage() {
     },
     signal: controller.signal,
   });
-        if (response.data.success && count < 1) {
-          setCount(count + 1);
+        if (response.data.success) {
           setReleaseInfo(response.data);
            console.log(response.data);
           
-           try {
+           if (count < 1) {
+            setCount(count + 1);
+            try {
   const viewResponse = await axios.post(
     `${process.env.REACT_APP_BACKEND_BASE_URL}/views`,
     {
@@ -52,9 +53,10 @@ function ReleasePage() {
   console.error("Error recording view:", viewError);
 }
 }
+}
           
         
-          else{ alert(`${response.data.message}`);};
+          else { alert(`${response.data.message}`);};
       } catch (error) {
         alert(error.message);
         console.error("Error fetching release info:", error);
