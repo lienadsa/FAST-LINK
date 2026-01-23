@@ -77,6 +77,7 @@ function SubmissionPage() {
         Submit
       </button>
     </form>
+    <h1>{isChecking && "Checking..."}</h1>
          </div>   
         </div>
     )
