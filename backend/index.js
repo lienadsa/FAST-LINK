@@ -30,7 +30,7 @@ const pool = new Pool({
 
 
 app.use(cors({
-  origin: process.env.FRONTEND_BASE_URL, // Use string directly, not array
+  origin: process.env.FRONTEND_BASE_URL,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
